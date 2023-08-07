@@ -1,0 +1,8 @@
+<p class="question">
+  {{ questionData.question  | beautifyHTMLEntityText }}
+</p>
+<ul class="answers">
+  <li class="answer-item" *ngFor="let answer of shuffleAnswers">
+    {{ answer | beautifyHTMLEntityText }}
+  </li>
+</ul>

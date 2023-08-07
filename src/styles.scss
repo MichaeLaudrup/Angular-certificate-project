@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 //DARK-MODE
 :root {
-  --main-color: rgb(72, 81, 254);
+  --main-color: rgb(157, 250, 171);
   --dark-bg-deepest: #1f242d;
   --dark-bg-intermediate: #474d59;
   --dark-bg-shallowest: #323946;
@@ -17,11 +17,25 @@
   box-sizing: border-box;
 }
 
+html, body {
+  font-size: 17px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+ul {
+  list-style: none;
+}
+
 .generic-btn {
+  cursor: pointer;
   padding: .5rem 1rem;
   border-radius: var(--generic-border-radius);
   background-color: var(--main-color);
   border:none;
   color:white;
   font-weight: bold;
+}
+
+button[disabled] {
+  opacity: .4;
 }

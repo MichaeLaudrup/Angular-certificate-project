@@ -15,5 +15,12 @@ h1 {
 }
 
 .quiz-filter-container {
-  width: 50%;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.questions-container {
+  margin-top: 1rem;
+  border-radius: 5px;
+  background-color: var(--dark-bg-shallowest);
 }
