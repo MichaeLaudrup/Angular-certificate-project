@@ -20,8 +20,7 @@ export class TriviaService {
   }
 
   getQuizQuestions(triviaQuizRequest: TriviaQuizRequest) : Observable<QuestionsResponse> {
-    const queryParams = `category=${triviaQuizRequest.category}&difficulty${triviaQuizRequest.difficulty} \ 
-      &amount=${triviaQuizRequest.amount}&type=${triviaQuizRequest.type}`;
+    const queryParams = `category=${triviaQuizRequest.category}&difficulty=${triviaQuizRequest.difficulty.toLocaleLowerCase()}&amount=${triviaQuizRequest.amount}&type=${triviaQuizRequest.type}`;
     const url = `${this.API_URL_BASE}/api.php?${queryParams.toString()}`;
     return this.httpClient.get<QuestionsResponse>(url);
   }

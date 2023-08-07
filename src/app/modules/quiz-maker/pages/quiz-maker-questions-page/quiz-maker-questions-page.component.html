@@ -2,8 +2,16 @@
 <div class="quiz-filter-container">
   <app-quiz-maker-config-filter (createTrivial)="generateQuestions($event)"></app-quiz-maker-config-filter>
   <div class="questions-container" *ngIf="questions && questions.length > 0">
-    <ng-container *ngFor="let question of questions">
-      <app-quiz-question [questionData]="question"></app-quiz-question>
+    <ng-container *ngFor="let question of questions; let numQuestion = index">
+      <app-quiz-question 
+        [questionData]="question"
+        (answerChosen)="selectAnswer($event, numQuestion)"
+      ></app-quiz-question>
     </ng-container>
+  </div>
+  <div class="btn-line" *ngIf="showSubmitBtn">
+    <button class="generic-btn" (click)="goToResultsPage()" type="button">
+      Submit
+    </button>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrivialQuestion } from 'src/app/shared/interfaces/trivial-question.interface';
 import { BeautifyHTMLEntityTextPipe } from 'src/app/shared/pipe/beautify-html-entity-text/beautify-html-entity-text.pipe';
@@ -13,11 +13,14 @@ import { shuffleStringArray } from 'src/app/shared/utils/random.utils';
 })
 export class QuizQuestionComponent implements OnInit {
   @Input() questionData!: TrivialQuestion;
+  @Input() resultsMode = false;
+  @Output() answerChosen = new EventEmitter<string>(); 
   
-  shuffleAnswers: string[] = []; 
-  
+  currentAnswerSelected: string = ''; 
   
   ngOnInit(): void {
-    this.shuffleAnswers = shuffleStringArray([this.questionData.correct_answer, ...this.questionData.incorrect_answers]);
+    if(!this.resultsMode) {
+      this.questionData.questionAnswersShufflered = shuffleStringArray([this.questionData.correct_answer, ...this.questionData.incorrect_answers]);
+    }
   }
 }

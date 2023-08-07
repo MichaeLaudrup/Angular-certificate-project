@@ -1,8 +1,18 @@
 <p class="question">
   {{ questionData.question  | beautifyHTMLEntityText }}
 </p>
-<ul class="answers">
-  <li class="answer-item" *ngFor="let answer of shuffleAnswers">
+<div class="answers">
+  <button 
+    class="answer-item" 
+    *ngFor="let answer of questionData.questionAnswersShufflered"
+    (click)="!resultsMode && this.answerChosen.emit(answer)"
+    [ngClass]="{
+      'selected': questionData.answerChosen === answer,
+      'not-interactive-answer': resultsMode,
+      'incorrect': resultsMode && (questionData.answerChosen === answer) && (answer !== questionData.correct_answer)
+    }"
+    >
     {{ answer | beautifyHTMLEntityText }}
-  </li>
-</ul>
+    <button class="close-btn" *ngIf="questionData.answerChosen === answer">X</button>
+  </button>
+</div>

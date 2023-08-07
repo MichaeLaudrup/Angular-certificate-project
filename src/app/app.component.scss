@@ -7,3 +7,8 @@
   min-height: 100vh;
   height: 100%;
 }
+
+.content {
+  padding-top: var(--header-nav-height);
+  padding-bottom: var(--footer-height);
+}
